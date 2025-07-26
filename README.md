@@ -16,13 +16,17 @@ This started as an over-engineered concept for fun and grew into a detailed tech
 
 The High-Density Digital Cassette (HDDC) system would theoretically transform standard audio cassette tapes into high-capacity digital storage media, achieving approximately **1GB storage capacity per 90-minute cassette** while maintaining compatibility with existing tape media.
 
-## Key Innovations
+## The Five Hearts of HDDC
 
-- **PCB-Integrated Motors**: Revolutionary dual-spindle direct drive eliminates traditional capstan mechanisms
-- **Intelligent Tape Health Monitoring**: Real-time stretch detection and adaptive tension control
-- **Self-Aware Media**: Tapes track their own health and optimize playback automatically
-- **50-80 Track Multi-Head**: GMR sensor arrays enable massive parallel data streams
-- **Graceful Degradation**: RAID-6 like redundancy survives loss of up to 40% of tracks
+This system is built around five core technological components:
+
+1. **🧲 GMR Read/Write Heads** - *Most technically grounded* (256-sensor arrays already proven)
+2. **⚡ PCB-Based Direct Drive Motors** - *Revolutionary innovation* (eliminates traditional mechanisms)  
+3. **📊 Format Specification** - *Complex but achievable* (RAID-6 style redundancy + metadata)
+4. **🧠 Real-Time Compute** - *Significant challenge* (2.56 MSPS across 80 channels)
+5. **📼 Cassette Tape Media** - *Elegant constraint* (work within existing ecosystem)
+
+**Key Insight**: The most challenging aspect (80-channel sensor arrays) is also the most proven technology. See [SYSTEM-HEARTS.md](SYSTEM-HEARTS.md) for detailed analysis.
 
 ## Technical Specifications
 
