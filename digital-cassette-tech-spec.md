@@ -3,7 +3,7 @@
 
 ### Executive Summary
 
-This document specifies a high-density digital storage system utilizing standard audio cassette tape media. By employing multi-track magnetic heads, modern signal processing, and redundant encoding schemes, the system achieves approximately 1GB storage capacity per 90-minute cassette while maintaining compatibility with existing tape media.
+This document specifies a high-density digital storage system utilizing standard audio cassette tape media. By employing multi-track magnetic heads, modern signal processing, and redundant encoding schemes, the system achieves **50-600MB storage capacity** per 90-minute cassette (depending on tape quality and track density) while maintaining compatibility with existing tape media.
 
 ---
 
@@ -13,9 +13,9 @@ This document specifies a high-density digital storage system utilizing standard
 The High-Density Digital Cassette (HDDC) system transforms standard audio cassette tapes into high-capacity digital storage media while preserving the physical form factor and cultural significance of the cassette format.
 
 ### 1.2 Key Features
-- **Capacity**: ~1GB per 90-minute cassette
-- **Compatibility**: Uses standard Type I/II audio cassettes
-- **Data Rate**: ~300KB/s sustained read/write
+- **Capacity**: 50-600MB per 90-minute cassette (varies by tape quality and track density)
+- **Compatibility**: Uses standard Type I/II/IV audio cassettes
+- **Data Rate**: 50-300KB/s sustained read/write (varies by implementation)
 - **Position Awareness**: Instant position acquisition from any tape location
 - **Bidirectional**: Continuous playback in either direction
 - **Redundancy**: Survives loss of up to 40% of tracks
@@ -50,15 +50,17 @@ Track Width: 3.81mm
 ```
 
 ### 2.3 Magnetic Recording Parameters
-- **Track Density**: 13-21 tracks/mm
-- **Track Width**: 45-75 μm per track
-- **Linear Density**: 1000-2000 flux reversals/mm
-- **Azimuth**: 0° (no azimuth offset)
+- **Track Density**: 4-13 tracks/mm (limited by magnetic grain size)
+- **Track Width**: 75-300 μm per track (varies by tape type and phase)
+- **Linear Density**: 400-1500 flux reversals/mm (depends on particle size)
+- **Azimuth**: 0° (no azimuth offset)  
 - **Write Current**: Optimized per tape type
+
+**Physical Constraints**: Magnetic particle size fundamentally limits achievable density. See [MAGNETIC-MEDIA-CONSTRAINTS.md](MAGNETIC-MEDIA-CONSTRAINTS.md) for detailed analysis.
 
 ### 2.4 Head Design Requirements
 - **Technology**: Giant Magnetoresistive (GMR) or Tunnel Magnetoresistive (TMR)
-- **Track Count**: 50-80 parallel tracks
+- **Track Count**: 8-48 parallel tracks (realistic range based on magnetic media limits)
 - **Gap Length**: <1 μm
 - **Shield-to-shield Spacing**: <100 nm
 - **Frequency Response**: DC to 100 kHz
@@ -728,23 +730,68 @@ Re-encode digital → Write to blank tape
 ## 7. Performance Specifications
 
 ### 7.1 Capacity Calculations
+
+**REVISED**: Based on magnetic media physical constraints
+
+#### Phase 1: Basic Implementation (Type II Cassettes)
 ```
 Tape Length: 135m (C90)
-Tape Speed: 47.6 mm/s
-Duration: 2,835 seconds
-Tracks: 60 (nominal)
-Bits/track/mm: 1,500
-Raw Capacity: 135m × 60 tracks × 1,500 bits/mm = 12.15 Gb
-After 8b/10b: 9.72 Gb
-After ECC: 7.78 Gb
-Usable: ~972 MB
+Tracks: 16 (realistic for chrome cassettes)
+Track Width: ~240μm each
+Bits/track/mm: 800 (limited by particle size)
+Raw Capacity: 135m × 16 tracks × 800 bits/mm = 1.73 Gb
+After 8b/10b: 1.38 Gb  
+After ECC: 1.10 Gb
+Usable: ~140 MB
 ```
 
+#### Phase 2: Optimized Implementation (High-End Type II)
+```
+Tape Length: 135m (C90)
+Tracks: 24 (pushing chrome cassette limits)
+Track Width: ~160μm each  
+Bits/track/mm: 1000
+Raw Capacity: 135m × 24 tracks × 1000 bits/mm = 3.24 Gb
+After 8b/10b: 2.59 Gb
+After ECC: 2.07 Gb
+Usable: ~260 MB
+```
+
+#### Phase 3: Theoretical Maximum (Type IV Metal)
+```
+Tape Length: 135m (C90)
+Tracks: 48 (theoretical limit with metal particles)
+Track Width: ~80μm each
+Bits/track/mm: 1500 (metal particle capability)
+Raw Capacity: 135m × 48 tracks × 1500 bits/mm = 9.72 Gb
+After 8b/10b: 7.78 Gb
+After ECC: 6.22 Gb
+Usable: ~600 MB (with premium metal cassettes only)
+```
+
+**Reality Check**: Print-through crosstalk and long-term storage reliability limit practical capacity to the lower end of these ranges. See [MAGNETIC-MEDIA-CONSTRAINTS.md](MAGNETIC-MEDIA-CONSTRAINTS.md) for detailed analysis.
+
 ### 7.2 Data Rates
-- **Raw**: 4.29 Mbps (all tracks)
-- **After decoding**: 3.43 Mbps
-- **After ECC**: 2.74 Mbps
-- **Sustained**: 343 KB/s
+
+**Revised based on realistic track counts:**
+
+#### Phase 1 (16 tracks):
+- **Raw**: 1.02 Mbps (16 tracks × 800 bits/mm × 47.6 mm/s)
+- **After decoding**: 0.82 Mbps  
+- **After ECC**: 0.66 Mbps
+- **Sustained**: ~80 KB/s
+
+#### Phase 2 (24 tracks):
+- **Raw**: 1.90 Mbps  
+- **After decoding**: 1.52 Mbps
+- **After ECC**: 1.22 Mbps
+- **Sustained**: ~150 KB/s
+
+#### Phase 3 (48 tracks, theoretical):
+- **Raw**: 3.43 Mbps
+- **After decoding**: 2.74 Mbps
+- **After ECC**: 2.19 Mbps  
+- **Sustained**: ~270 KB/s
 
 ### 7.3 Seek Performance
 - **Cold start**: <2 seconds to first data

@@ -139,27 +139,37 @@ See: [digital-cassette-tech-spec.md](digital-cassette-tech-spec.md) Section 2.1
 | **PCB Motors** | 🟡 Medium | 🔄 Custom design | Revolutionary approach |
 | **Format Spec** | 🟡 Medium | 📚 Literature-based | Complex but standard |
 | **Real-time Compute** | 🟠 High | 🛒 Commercial processors | Challenging optimization |
-| **Cassette Media** | 🟢 Low | 📼 Everywhere | Existing ecosystem |
+| **Cassette Media** | 🔴 **CRITICAL** | 📼 **Physical limits** | **Fundamental constraint** |
 
-### The Remarkable Insight
+### The Reality Check
 
-**The most technically challenging aspect (80-channel GMR arrays) is also the most proven and available technology.** This grounds the entire HDDC concept in reality rather than speculation.
+**REVISED INSIGHT**: While GMR sensor arrays are proven technology, **magnetic media physics** fundamentally constrains the HDDC concept. The tape itself - not the electronics - imposes the real limitations:
 
-The truly innovative aspects (PCB motors, intelligent metadata) represent engineering challenges rather than fundamental technology gaps.
+- **Magnetic grain size** limits practical track density to 16-32 tracks
+- **Print-through crosstalk** makes long-term storage problematic
+- **Capacity reality** is 50-200MB, not 1GB as originally envisioned
+
+The cassette media represents the **hardest physical constraint**, not an "elegant limitation" but a fundamental bottleneck.
 
 ---
 
-## Conclusion: Engineering Fiction Grounded in Reality
+## Conclusion: Honest Engineering Fiction
 
-The HDDC system demonstrates how modern technology could revolutionize a "obsolete" format:
+The HDDC system demonstrates both the possibilities and fundamental limits of magnetic storage:
 
 - **Technical foundation**: Real GMR sensor arrays make multi-track reading feasible
 - **Mechanical innovation**: PCB motors eliminate wear while improving performance  
-- **Systems integration**: Sophisticated but achievable with modern embedded systems
-- **Cultural relevance**: Preserves the tactile experience while adding digital reliability
+- **Physical reality**: Magnetic grain size imposes hard limits on density
+- **Honest capacity**: 50-200MB is still impressive for cassette format
 
-**This is engineering fiction at its best - plausible enough to be interesting, detailed enough to spark real technical discussions.**
+**This is engineering fiction at its best - grounded in real technology but honest about physical constraints.**
 
-The five hearts of HDDC work together to create something neither purely analog nor purely digital, but a hybrid that captures the best of both worlds while pushing the boundaries of what's possible with magnetic tape storage.
+The value of HDDC isn't in competing with modern storage on capacity, but in:
+- **Educational insight** into magnetic recording physics
+- **Maker community projects** exploring format boundaries  
+- **Nostalgic innovation** bridging analog and digital eras
+- **Form factor experience** that can't be replicated digitally
 
-*"Not just better cassettes, but better media."*
+Even at 50-200MB, HDDC represents a **100-500× improvement** over analog cassettes - a remarkable achievement within the constraints of 1960s magnetic media technology.
+
+*"Not competing on capacity, but creating experiences."*

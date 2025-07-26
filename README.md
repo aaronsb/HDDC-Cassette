@@ -14,7 +14,7 @@ This started as an over-engineered concept for fun and grew into a detailed tech
 
 ![HDDC Concept](HDDC.png)
 
-The High-Density Digital Cassette (HDDC) system would theoretically transform standard audio cassette tapes into high-capacity digital storage media, achieving approximately **1GB storage capacity per 90-minute cassette** while maintaining compatibility with existing tape media.
+The High-Density Digital Cassette (HDDC) system would theoretically transform standard audio cassette tapes into high-capacity digital storage media, achieving **50-600MB storage capacity per 90-minute cassette** (depending on tape quality and implementation) while maintaining compatibility with existing tape media.
 
 ## The Five Hearts of HDDC
 
@@ -23,18 +23,23 @@ This system is built around five core technological components:
 1. **🧲 GMR Read/Write Heads** - *Most technically grounded* (256-sensor arrays already proven)
 2. **⚡ PCB-Based Direct Drive Motors** - *Revolutionary innovation* (eliminates traditional mechanisms)  
 3. **📊 Format Specification** - *Complex but achievable* (RAID-6 style redundancy + metadata)
-4. **🧠 Real-Time Compute** - *Significant challenge* (2.56 MSPS across 80 channels)
-5. **📼 Cassette Tape Media** - *Elegant constraint* (work within existing ecosystem)
+4. **🧠 Real-Time Compute** - *Significant challenge* (1-3 MSPS across 16-48 channels)
+5. **📼 Cassette Tape Media** - *Physical constraint* (magnetic grain size limits track density)
 
-**Key Insight**: The most challenging aspect (80-channel sensor arrays) is also the most proven technology. See [SYSTEM-HEARTS.md](SYSTEM-HEARTS.md) for detailed analysis.
+**Key Insight**: GMR sensor arrays are proven technology, but **magnetic media physics** fundamentally limits practical capacity to 50-200MB for most implementations. See [MAGNETIC-MEDIA-CONSTRAINTS.md](MAGNETIC-MEDIA-CONSTRAINTS.md) for detailed analysis.
 
 ## Technical Specifications
 
-- **Capacity**: ~1GB per C90 cassette
-- **Data Rate**: ~300KB/s sustained read/write
-- **Track Count**: 50-80 parallel tracks
+- **Capacity**: 50-600MB per C90 cassette (varies by tape quality and track density)
+- **Data Rate**: 50-270KB/s sustained read/write
+- **Track Count**: 8-48 parallel tracks (limited by magnetic grain resolution)
 - **Error Correction**: Reed-Solomon + LDPC with cross-track redundancy
 - **Legacy Support**: Can read original analog audio cassettes
+
+### Capacity by Implementation Phase
+- **Phase 1** (Type I/II, 8-16 tracks): 25-75 MB
+- **Phase 2** (Type II, 16-32 tracks): 75-200 MB  
+- **Phase 3** (Type IV Metal, 32-48 tracks): 200-600 MB
 
 ## Repository Structure
 
