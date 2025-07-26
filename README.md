@@ -2,6 +2,8 @@
 
 **A thought experiment in engineering physical media storage using standard audio cassettes**
 
+![HDDC Concept](HDDC.png)
+
 ## What This Is (And Isn't)
 
 Ideas are cheap and everyone has them - this is no different. This is a thought experiment about how to actually engineer a format specification for high-density digital storage on cassette tapes. I'm not particularly skilled in any specific area of this project, so this is more about exploring "what if we could..." rather than "here's how to build it."
