@@ -10,6 +10,8 @@ This started as an over-engineered concept for fun and grew into a detailed tech
 
 ## The Concept
 
+![HDDC Concept](HDDC.png)
+
 The High-Density Digital Cassette (HDDC) system would theoretically transform standard audio cassette tapes into high-capacity digital storage media, achieving approximately **1GB storage capacity per 90-minute cassette** while maintaining compatibility with existing tape media.
 
 ## Key Innovations
