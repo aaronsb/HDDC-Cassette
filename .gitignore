@@ -1,0 +1,49 @@
+# Build outputs
+*.o
+*.elf
+*.bin
+*.hex
+*.map
+
+# IDE files
+.vscode/
+*.code-workspace
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*~
+*.tmp
+*.bak
+*.swp
+
+# KiCad files
+*.bck
+*.kicad_pcb-bak
+*.sch-bak
+*-cache.lib
+*-rescue.lib
+fp-info-cache
+
+# Simulation results
+*.sim
+*.wdb
+
+# Documentation build
+docs/_build/
+*.pdf
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Hardware manufacturing
+gerber/
+*.zip
+drill/
+
+# Personal notes
+notes/
+scratch/
+private/
